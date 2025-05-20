@@ -17,7 +17,7 @@ export function SortTodos({ onSort }) {
           <option value="dateAdded">Date Added</option>
           <option value="dueDate">Due Date</option>
           <option value="priority">Priority</option>
-        </select>
+        </select> 
       </label>
       <label>
         Order:
