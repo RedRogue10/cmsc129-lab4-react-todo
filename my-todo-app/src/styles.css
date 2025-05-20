@@ -6,7 +6,7 @@
 body {
   background: #333;
   color: hsl(200, 100%, 90%);
-  max-width: 400px;
+  max-width: 800px;
   padding: 1rem;
   margin: 0 auto;
 }
@@ -24,9 +24,9 @@ body {
 }
 
 .btn {
-  background: hsl(200, 100%, 50%, 0.1);
+  background: hsl(200, 100%, 50%, 0.2);
   border: 1px solid hsl(200, 100%, 50%);
-  color: hsl(200, 100%, 50%);
+  color: hsl(0, 0%, 100%);
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
   cursor: pointer;
@@ -39,9 +39,9 @@ body {
 }
 
 .btn.btn-danger {
-  background: hsl(0, 100%, 40%, 0.1);
+  background: hsl(0, 100%, 40%, 0.2);
   border: 1px solid hsl(0, 100%, 40%);
-  color: hsl(0, 100%, 40%);
+  color: hsl(0, 0%, 100%);
 }
 
 .btn.btn-danger:hover,
@@ -89,6 +89,7 @@ body {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  
 }
 
 .list li label {
@@ -137,4 +138,77 @@ body {
 
 .list li:has(input:checked) label:hover::before {
   background: hsl(200, 100%, 30%);
+}
+
+.list li:has(input:checked) .btn {
+  color: hsl(200, 100%, 90%);
+  visibility: hidden;
+}
+.list li:has(input:checked) .btn.btn.btn-danger {
+  
+  color: hsl(200, 100%, 90%);
+  visibility: visible;
+}
+
+.list-item {
+border: #222 1px solid;
+padding: 10PX;
+background-color: darkslategrey;
+display: flex;
+align-items: left;
+justify-content: space-between;
+}   
+
+.task-buttons {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  
+  display: flex;
+  gap: 0.5rem;
+}
+
+.popup-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.popup {
+  background: #222;
+  padding: 2em;
+  border-radius: 8px;
+  min-width: 300px;
+  color: #fff;
+}
+.toast {
+  position: fixed;
+  bottom: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 1em 2em;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  z-index: 2000;
+}
+.popup-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: right;
+}
+.priority-high{
+  background-color: rgba(255, 0, 0, 0.2);
+}
+.priority-medium{
+  background-color:rgba(255, 166, 0, 0.2);
+}
+.priority-low{
+  background-color: rgba(0, 128, 0, 0.2);
 }
