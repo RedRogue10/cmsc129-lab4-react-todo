@@ -1,12 +1,7 @@
-import { useState } from "react"
-
-export function SortTodos({ onSort }) {
-  const [sortBy, setSortBy] = useState("dateAdded")
-  const [order, setOrder] = useState("asc")
-
+export function SortTodos({ sortBy, setSortBy, order, setOrder }) {
   function handleSort(e) {
-    e.preventDefault()
-    onSort(sortBy, order)
+    e.preventDefault();
+    // No need to call onSort, sorting is handled in App.jsx
   }
 
   return (
@@ -17,7 +12,7 @@ export function SortTodos({ onSort }) {
           <option value="dateAdded">Date Added</option>
           <option value="dueDate">Due Date</option>
           <option value="priority">Priority</option>
-        </select> 
+        </select>
       </label>
       <label>
         Order:
@@ -26,7 +21,6 @@ export function SortTodos({ onSort }) {
           <option value="desc">Descending</option>
         </select>
       </label>
-      <button className="btn" type="submit">Sort</button>
     </form>
-  )
+  );
 }
