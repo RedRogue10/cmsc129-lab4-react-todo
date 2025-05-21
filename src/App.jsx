@@ -22,10 +22,12 @@ export default function App() {
   const [editingTodo, setEditingTodo] = useState(null)
   const [toast, setToast] = useState(null)
   const [lastDeleted, setLastDeleted] = useState(null)
+  const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "todos"), (snapshot) => {
       setTodos(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+      setLoading(false); // Set loading to false after data loads
     });
     return unsub;
   }, []);
@@ -114,12 +116,16 @@ export default function App() {
         order={order}
         setOrder={setOrder}
       />
-      <TodoList
-        todos={getSortedTodos(todos, sortBy, order)}
-        toggleTodo={toggleTodo}
-        deleteTodo={deleteTodo}
-        editTodo={startEditTodo}
-      />
+      {loading ? ( // Show loading indicator or message
+        <p>Loading...</p>
+      ) : (
+        <TodoList
+          todos={getSortedTodos(todos, sortBy, order)}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+          editTodo={startEditTodo}
+        />
+      )}
       {editingTodo && (
         <EditTodoPopup
           todo={editingTodo}
